@@ -1,17 +1,25 @@
+from datetime import date
 import requests
 import json
 import os 
 from dotenv import load_dotenv
-from requests.adapters import HTTPAdapter
-from urllib3.util.retry import Retry
+from airflow.models import Variable
 
+# from cryptography.fernet import Fernet
 
-load_dotenv(dotenv_path="./.env")
+# fernet_key = Fernet.generate_key()
+# print(fernet_key.decode())
 
-API_KEY = os.getenv("API_KEY")
-CHANNEL_NAME = "Judeinggg"
+# load_dotenv(dotenv_path="./.env")
+
+from airflow.decorators import  task
+
+API_KEY = Variable.get("API_KEY")
+
+CHANNEL_NAME = Variable.get("CHANNEL_HANDLE")
 max_results = 50
 batch_size = 50
+@task
 def get_channel_id():
 
     try:
@@ -37,7 +45,7 @@ def get_channel_id():
 
 
 
-
+@task
 def get_video_id(playlist_id):
     video_ids=[]
     pageToken = None
@@ -71,7 +79,7 @@ def get_video_id(playlist_id):
         return video_ids
     except requests.exceptions.RequestException as e:
         raise e
-
+@task
 def extract_video_stats(video_id):
     extracted_stats = []
    
@@ -115,8 +123,11 @@ def extract_video_stats(video_id):
         except requests.exceptions.RequestException as e:
             raise e
 
-
-
+@task
+def save_to_json(extracted_stats):
+    filepath =f"./data/yt_video_stats({date.today()}).json"
+    with open(filepath, "w", encoding="utf-8") as json_file:
+        json.dump(extracted_stats, json_file, indent=4, ensure_ascii=False)
 
 
 
@@ -124,4 +135,4 @@ if __name__ == "__main__":
     playlist_id = get_channel_id()  
     videoID = get_video_id(playlist_id)
     extracted_videos = extract_video_stats(videoID)
-    print(extracted_videos)
+    save_to_json(extracted_videos)
