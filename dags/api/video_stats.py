@@ -110,6 +110,8 @@ def extract_video_stats(video_id):
                     "duration": contentDetails.get("duration"),
                     "publishedAt": snippet.get("publishedAt"),
                     "view_count": statistics.get("viewCount"),
+                    "like_count": statistics.get("likeCount"),
+                    "comment_count": statistics.get("commentCount"),
                     "definition": contentDetails.get("definition"),
                 }
 
