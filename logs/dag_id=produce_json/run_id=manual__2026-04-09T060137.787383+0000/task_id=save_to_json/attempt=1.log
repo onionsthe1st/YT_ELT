@@ -1,0 +1,20 @@
+[2026-04-09T06:01:57.184+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-04-09T06:01:57.213+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: produce_json.save_to_json manual__2026-04-09T06:01:37.787383+00:00 [queued]>
+[2026-04-09T06:01:57.226+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: produce_json.save_to_json manual__2026-04-09T06:01:37.787383+00:00 [queued]>
+[2026-04-09T06:01:57.228+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2026-04-09T06:01:57.251+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): save_to_json> on 2026-04-09 06:01:37.787383+00:00
+[2026-04-09T06:01:57.259+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=5245) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2026-04-09T06:01:57.261+0000] {standard_task_runner.py:63} INFO - Started process 5246 to run task
+[2026-04-09T06:01:57.261+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'produce_json', 'save_to_json', 'manual__2026-04-09T06:01:37.787383+00:00', '--job-id', '13', '--raw', '--subdir', 'DAGS_FOLDER/main.py', '--cfg-path', '/tmp/tmp2p34cf8h']
+[2026-04-09T06:01:57.262+0000] {standard_task_runner.py:91} INFO - Job 13: Subtask save_to_json
+[2026-04-09T06:01:57.406+0000] {task_command.py:426} INFO - Running <TaskInstance: produce_json.save_to_json manual__2026-04-09T06:01:37.787383+00:00 [running]> on host 4453b64ce717
+[2026-04-09T06:01:57.619+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='kingsleyejiofor128@gmail.com' AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='produce_json' AIRFLOW_CTX_TASK_ID='save_to_json' AIRFLOW_CTX_EXECUTION_DATE='2026-04-09T06:01:37.787383+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-04-09T06:01:37.787383+00:00'
+[2026-04-09T06:01:57.621+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-04-09T06:01:57.628+0000] {python.py:237} INFO - Done. Returned value was: None
+[2026-04-09T06:01:57.629+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-04-09T06:01:57.640+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=produce_json, task_id=save_to_json, run_id=manual__2026-04-09T06:01:37.787383+00:00, execution_date=20260409T060137, start_date=20260409T060157, end_date=20260409T060157
+[2026-04-09T06:01:57.717+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2026-04-09T06:01:57.736+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-04-09T06:01:57.806+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
