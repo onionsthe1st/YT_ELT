@@ -40,7 +40,7 @@ def create_table( schema ):
     else:
         table_sql = f"""
             CREATE TABLE IF NOT EXISTS {schema}.{table} (
-                video_id VARCHAR(255) PRIMARY KEY,
+                video_ID VARCHAR(255) PRIMARY KEY,
                 title TEXT NOT NULL,
                 description TEXT NOT NULL,
                 duration TIME,

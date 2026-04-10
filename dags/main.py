@@ -11,7 +11,7 @@ default_args = {
     "email_on_retry": False,
     "email": 'kingsleyejiofor128@gmail.com',
     'start_date': datetime(2024, 6, 1, tzinfo=local_tz),
-    'retries': 1,
+    'retries': 2,
     'retry_delay': timedelta(minutes=5),
     "dagrun_timeout": timedelta(minutes=60),
     "max_active_runs": 1
@@ -22,6 +22,8 @@ with DAG(
     default_args=default_args,
     description='DAG for getting json file from raw data',
     schedule_interval= "0 8 * * *",
+    schedule_interval="0 12 * * *",
+    schedule_interval="0 20 * * *",
     catchup=False
 ) as dag:
     
